@@ -145,10 +145,10 @@ void updatePaddle(Paddle &p)
 
 	// TODO
 	if (sfw::getKey(p.up))
-		p.y += 15;
+		p.y += 17;
 
 	if (sfw::getKey(p.down))
-		p.y -= 15;
+		p.y -= 17;
 
 
 	// bounds

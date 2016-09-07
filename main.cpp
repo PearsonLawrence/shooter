@@ -31,10 +31,9 @@ void main()
 	{
 		b[i] = createBall(400, 300, randRange(5, 20), colors[randRange(0,2)]);
 	}
-	b[0].active = true;
 
-	sfw::setBackgroundColor(BLACK);
 
+	//sfw::setBackgroundColor(r);
 
 	bool gameOver = false;
 	while (sfw::stepContext())
@@ -42,12 +41,18 @@ void main()
 		// Input/Logic Step
 		// - handle player input
 		// - calculate new positions n' stuff
-
+		sfw::drawTexture(r, 0, 600, 800, 600, 0, false, 0, RED);
 		if (!gameOver)
 		{
 			updateBall(b[0], p1, p2);
+
+
+
 			updatePaddle(p1);
 			updatePaddle(p2);
+
+
+
 
 			if (p1.score >= 2 || p2.score >= 2)
 			{
@@ -69,11 +74,11 @@ void main()
 				//drawBall(b4);
 			}
 
-			if (p1.score >= 5 || p2.score >= 5)
-			{
-				b[4].active = true;
-				//updateBall(b7, p1, p2);
-			}
+			//if (p1.score >= 5 || p2.score >= 5)
+			//{
+			//	b[4].active = true;
+			//	//updateBall(b7, p1, p2);
+			//}
 
 			for (int i = 0; i < BALL_COUNT; ++i)
 			{
@@ -91,12 +96,12 @@ void main()
 
 		drawScore(d, p1.score, p2.score);
 
-		if (p1.score >= 10)
+		if (p1.score >= 15)
 		{
 			gameOver = true;
 			drawWin(d);
 		}
-		if (p2.score >= 10)
+		if (p2.score >= 15)
 		{
 			gameOver = true;
 			drawWin2(d);
