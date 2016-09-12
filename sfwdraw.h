@@ -58,7 +58,7 @@ NOTE: YOU MUST CALL initContext for any of the functions to work!
 namespace sfw
 {
 	//Identity transformation matrix, primarily for internal use.
-	const float identity[16] = {1,0,0,0,  0,1,0,0, 0,0,1,0, 0,0,0,1};
+	const float identity[16] = { 1,0,0,0,  0,1,0,0, 0,0,1,0, 0,0,0,1 };
 	// path	     : Path to the texture file
 	// rows,cols : If this is a uniform spritesheet (also called sprite atlas), how many rows and columns of sub-images are there?
 	// Returns a handle to be used with drawTexture/drawString/drawTextureMatrix functions. These handles are NOT openGL handles, and
@@ -68,7 +68,7 @@ namespace sfw
 	unsigned getTextureWidth(unsigned handle);
 	// Using the texture handle provided by loadTextureMap, returns the height in pixels.
 	unsigned getTextureHeight(unsigned handle);
-	
+
 	// verbose wrapper for drawTextureMatrix
 	// Handle		  : Texture handle returned from loadTextureMap
 	// x,y			  : translation (or position)
@@ -79,14 +79,14 @@ namespace sfw
 	// tint			  : a hex color value applied as a tint to the texture
 	// transform	  : a 4x4 transformation matrix that could  be used for parenting.
 	void drawTexture(unsigned handle, float x, float y, float width = 1, float height = 1, float angle = 0, bool centered = true, unsigned index = 0, unsigned int tint = WHITE, const float transform[16] = identity);
-	
+
 	// used internally for all texture draw calls.
 	// handle		  : Texture handle returned from loadTextureMap
 	// index		  : If loadTextureMap was given rows and cols, index will fetch the corresponding sub-image
 	// tint			  : a hex color value applied as a tint to the texture
 	// transform	  : a 4x4 transformation matrix
 	void drawTextureMatrix(unsigned handle, unsigned index = 0, unsigned int tint = WHITE, const float transform[16] = identity);
-	
+
 	// verbose wrapper for drawTextureMatrix, focusing on drawing strings of text.
 	// search "bitmap font" for some examples.
 	// Uses 'centered = false' behavior- transformations applied to top-left corner of all the text.
@@ -145,7 +145,7 @@ namespace sfw
 
 	// 0 for right, 1 for left
 	bool getMouseButton(unsigned mousekeycode);
-	
+
 	// returns the x position of the mouse- Screen relative!
 	float getMouseX();
 	// returns the y position of the mouse- Screen relative!
@@ -158,3 +158,4 @@ namespace sfw
 	// This value will NOT change until stepContext is called.
 	float getDeltaTime();
 }
+
