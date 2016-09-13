@@ -120,13 +120,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="bullet.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="Gamestate.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="sfwdraw.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="gamestate.cpp" />
+    <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="gameSt.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="player.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
