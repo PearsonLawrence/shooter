@@ -19,6 +19,7 @@ struct Rectangle
 
 Point getCorner(Rectangle rect, Point position, int corner);
 
+int randRange(int start, int end);
 
 void drawRectangle(Rectangle rect, Point position);
 

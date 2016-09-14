@@ -13,4 +13,8 @@ public:
 	void createBullet(float x, float y, float size, unsigned int color);
 	void drawBullet();
 	void updateBullet(Player &p1, Player &p2);
+
+
+	bool collides(const Bullet &b);
 };
+

@@ -2,17 +2,18 @@
 #include "game.h"
 #include "Player.h"
 #include "bullet.h"
+#include <time.h>
 
-void drawScore(unsigned font, int p1score, int p2score)
+void drawhealth(unsigned font, int p1health, int p2health)
 {
 	char buffer[64] = { 0 };		//array 
-									//_itoa_s(p1score,buffer,10);
-	sprintf_s(buffer, "%d", p1score);
-	sfw::drawString(font, buffer, 650, 600, 40, 40);
+									//_itoa_s(p1health,buffer,10);
+	sprintf_s(buffer, "P2 Health:%d", p1health);
+	sfw::drawString(font, buffer, 480, 600, 17, 17);
 
-	//_itoa_s(p2score, buffer, 10);
-	sprintf_s(buffer, "%d", p2score);
-	sfw::drawString(font, buffer, 100, 600, 40, 40);
+	//_itoa_s(p2health, buffer, 10);
+	sprintf_s(buffer, "P1 Health:%d", p2health);
+	sfw::drawString(font, buffer, 50, 600, 17, 17);
 }
 
 void GameState::init()
@@ -24,8 +25,9 @@ void GameState::init()
 	playerRect.corners[1].x = 10;
 	playerRect.corners[1].y = 50;
 
-	p1.createPlayer(20, 250, playerRect, 'W', 'S', 'D', 1, BLUE);
-	p2.createPlayer(780, 250, playerRect, 'I', 'K', 'J', -1, RED);
+	p1.createPlayer(20, 250, playerRect, 'W', 'S', 'D', 1, GREEN);
+	p2.createPlayer(780, 250, playerRect, 'I', 'K', 'J', -1, YELLOW);
+	gameOver = false;
 }
 
 void GameState::update()
@@ -51,6 +53,11 @@ void GameState::update()
 		// update all players
 		p1.updatePlayer();
 		p2.updatePlayer();
+
+
+		// Two arrays
+		// Each
+
 	}
 }
 
@@ -72,20 +79,20 @@ void GameState::drawRound()
 
 		p1.drawPlayer();
 		p2.drawPlayer();
-		drawScore(d, p1.score, p2.score);
+		drawhealth(d, p1.health, p2.health);
 	}
-	if (p1.score >= 15)
-	{
-		gameOver = true;
-		drawWin(d);
-	}
-	if (p2.score >= 15)
+	if (p1.health <= 0)
 	{
 		gameOver = true;
 		drawWin2(d);
 	}
+	if (p2.health <= 0)
+	{
+		gameOver = true;
+		drawWin(d);
+	}
 
-	if (!gameOver)
+	/*if (!gameOver)
 	{
 		for (int i = 0; i < Player::MAX_AMMO_COUNT; ++i)
 		{
@@ -101,16 +108,28 @@ void GameState::drawRound()
 
 		p1.drawPlayer();
 		p2.drawPlayer();
-		drawScore(d, p1.score, p2.score);
+		drawhealth(d, p1.health, p2.health);
 	}
-	if (p1.score >= 15)
+	if (p1.health <= 0)
 	{
 		gameOver = true;
 		drawWin(d);
 	}
-	if (p2.score >= 15)
+	if (p2.health <= 15)
 	{
 		gameOver = true;
 		drawWin2(d);
-	}
+	}*/
+}
+void GameState::play() { timer = 2.f; }
+APP_STATE GameState::next()
+{
+	if (gameOver)
+	{
+		
+			return ENTER_NEXT;
+		
+     }
+	else
+		return ACTION;
 }

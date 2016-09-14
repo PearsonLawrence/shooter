@@ -4,6 +4,7 @@
 #include <cstdio>
 #include "Player.h"
 #include "bullet.h"
+#include "constdecl.h"
 
 class GameState
 {
@@ -15,9 +16,11 @@ private:
 	Player p1, p2;
 	Rectangle playerRect;
 	bool gameOver = false;
-
+	float timer = 2;
 public:
 	void init();
 	void update();
 	void drawRound();
+	APP_STATE next();
+	void play();
 };

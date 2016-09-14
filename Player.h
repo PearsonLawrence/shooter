@@ -14,7 +14,7 @@ class Player
 	
 public:
 	Rectangle box;
-	int score = 0;
+	int health = 0;
 	float x = 0, y = 0;
 
 	const static int MAX_AMMO_COUNT = 10;

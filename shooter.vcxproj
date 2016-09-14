@@ -121,17 +121,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
+    <ClInclude Include="constdecl.h" />
+    <ClInclude Include="Depart.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="GameAction.h" />
     <ClInclude Include="Gamestate.h" />
+    <ClInclude Include="next.h" />
+    <ClInclude Include="Option.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="sfwdraw.h" />
+    <ClInclude Include="Splash.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="Depart.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gameSt.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="next.cpp" />
+    <ClCompile Include="Option.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="Splash.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

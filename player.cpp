@@ -15,10 +15,13 @@ void Player::createPlayer(float a_x, float a_y, Rectangle rect,
 	shootDirection = shootDir;
 	color = a_color;
 
+
+	health = 100;
+
 	// create boolets
 	for (int i = 0; i < MAX_AMMO_COUNT; i++)
 	{
-		ammo[i].createBullet(0, 0, 5, WHITE);
+		ammo[i].createBullet(0, 0, 5, a_color);
 	}
 }
 
