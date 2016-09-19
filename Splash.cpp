@@ -9,7 +9,7 @@ void Splash::draw()
 {
 	char buffer[64];
 	sprintf_s(buffer, "Please Press Enter");
-	sfw::drawString(font, buffer, 220, 290, 20, 20);
+	sfw::drawString(font, buffer, 475, 945, 20, 20);
 	//sfw::drawLine(100, 80, 100 + 500 * (timer / 4.f), 80);
 }
 

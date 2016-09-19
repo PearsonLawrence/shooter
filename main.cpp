@@ -9,10 +9,13 @@
 #include "next.h"
 void main()
 {
-	sfw::initContext(800, 600, "NSFW Draw");
-	
+	sfw::initContext(1890, 950, "NSFW Draw");
+	unsigned f = sfw::loadTextureMap("./res/tonc_font.png", 16, 6);
+	unsigned r = sfw::loadTextureMap("./res/background.jpg");
+	unsigned u = sfw::loadTextureMap("./res/crosshair.png");
 	unsigned font = sfw::loadTextureMap("./res/fontmap.png", 16, 16);
 	GameState gs;
+
 	//gs.init();
 	Option option;
 	Depart depart;
@@ -54,6 +57,7 @@ void main()
 			gs.init();
 
 		case ACTION:
+			sfw::drawTexture(r, 10, 980, 1870, 995, 0, false, 0, RED);
 			gs.update();
 			gs.drawRound();
 			state = gs.next();

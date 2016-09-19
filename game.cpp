@@ -57,3 +57,32 @@ void drawWin2(unsigned font)
 {
 	sfw::drawString(font, "Game over player 1 wins ", 160, 600, 20, 20);
 }
+
+//Orb createOrb(float x, float y, float size, unsigned int color)
+//{
+//
+//	Orb b;
+//	b.active = false;
+//	b.x = x;
+//	b.y = y;
+//	b.size = size;
+//	b.color = color;
+//	b.Velx = 0;
+//	b.Vely = randRange(150, 340);
+//
+//	return b;
+//}
+
+//void drawOrb(const Orb &b)
+//{
+//	sfw::drawCircle(b.x, b.y, b.size, 12, b.color);
+//}
+//void updateOrb(Orb &b)
+//{
+//
+//	if (b.y < 0)
+//		b.Vely *= -1;
+//
+//	if (b.y > 600)
+//		b.Vely *= -1;
+//}

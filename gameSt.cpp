@@ -3,30 +3,35 @@
 #include "Player.h"
 #include "bullet.h"
 #include <time.h>
+#include "orb.h"
 
 void drawhealth(unsigned font, int p1health, int p2health)
 {
 	char buffer[64] = { 0 };		//array 
 									//_itoa_s(p1health,buffer,10);
 	sprintf_s(buffer, "P2 Health:%d", p1health);
-	sfw::drawString(font, buffer, 480, 600, 17, 17);
+	sfw::drawString(font, buffer, 1555, 920, 17, 17, 0, 0, YELLOW);
 
 	//_itoa_s(p2health, buffer, 10);
 	sprintf_s(buffer, "P1 Health:%d", p2health);
-	sfw::drawString(font, buffer, 50, 600, 17, 17);
+	sfw::drawString(font, buffer, 100, 920, 17, 17, 0, 0, GREEN);
 }
 
 void GameState::init()
 {
+	//Orb orb;
+	sfw::loadTextureMap("./res/background.jpg");
 	Rectangle playerRect;
+	//Orb b;
 
 	playerRect.corners[0].x = -10;
-	playerRect.corners[0].y = -50;
+	playerRect.corners[0].y = -30;
 	playerRect.corners[1].x = 10;
-	playerRect.corners[1].y = 50;
-
-	p1.createPlayer(20, 250, playerRect, 'W', 'S', 'D', 1, GREEN);
-	p2.createPlayer(780, 250, playerRect, 'I', 'K', 'J', -1, YELLOW);
+	playerRect.corners[1].y = 30;
+	//createOrb(300, 400, 15, RED);
+	p1.createPlayer(30, 475, playerRect, 'W', 'S', 'D', 1, GREEN);
+	p2.createPlayer(1860, 475, playerRect, 'I', 'K', 'J', -1, YELLOW);
+	o.createOrb(945, 475, 30, WHITE);
 	gameOver = false;
 }
 
@@ -41,19 +46,19 @@ void GameState::update()
 		{
 			if (p1.ammo[i].active)
 			{
-				p1.ammo[i].updateBullet(p1, p2);
+				p1.ammo[i].updateBullet(p1, p2, o);
 
 			}
 			if (p2.ammo[i].active)
 			{
-				p2.ammo[i].updateBullet(p1, p2);
+				p2.ammo[i].updateBullet(p1, p2, o);
 			}
 		}
 
 		// update all players
 		p1.updatePlayer();
 		p2.updatePlayer();
-
+		o.updateOrb();
 
 		// Two arrays
 		// Each
@@ -76,9 +81,11 @@ void GameState::drawRound()
 				p2.ammo[i].drawBullet();
 			}
 		}
-
+		
+		//drawOrb(b);
 		p1.drawPlayer();
 		p2.drawPlayer();
+		o.drawOrb();
 		drawhealth(d, p1.health, p2.health);
 	}
 	if (p1.health <= 0)

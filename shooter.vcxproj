@@ -128,6 +128,7 @@
     <ClInclude Include="Gamestate.h" />
     <ClInclude Include="next.h" />
     <ClInclude Include="Option.h" />
+    <ClInclude Include="orb.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="sfwdraw.h" />
     <ClInclude Include="Splash.h" />
@@ -140,6 +141,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="next.cpp" />
     <ClCompile Include="Option.cpp" />
+    <ClCompile Include="Orb.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="Splash.cpp" />
   </ItemGroup>

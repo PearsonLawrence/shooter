@@ -1,4 +1,5 @@
 #pragma once
+#include "orb.h"
 class Player;	// forward declaration
 
 class Bullet
@@ -12,7 +13,7 @@ public:
 	bool active;
 	void createBullet(float x, float y, float size, unsigned int color);
 	void drawBullet();
-	void updateBullet(Player &p1, Player &p2);
+	void updateBullet(Player &p1, Player &p2, Orb &o);
 
 
 	bool collides(const Bullet &b);

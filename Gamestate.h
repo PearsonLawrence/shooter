@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "bullet.h"
 #include "constdecl.h"
-
+#include "orb.h"
 class GameState
 {
 private:
@@ -13,6 +13,7 @@ private:
 	unsigned d = sfw::loadTextureMap("./res/fontmap.png", 16, 16);
 	unsigned r = sfw::loadTextureMap("./res/background.jpg");
 	unsigned u = sfw::loadTextureMap("./res/crosshair.png");
+	Orb o;
 	Player p1, p2;
 	Rectangle playerRect;
 	bool gameOver = false;

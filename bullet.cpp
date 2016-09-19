@@ -20,10 +20,10 @@ void Bullet::createBullet(float a_x, float a_y, float a_size, unsigned int a_col
 
 void Bullet::drawBullet()
 {
-	sfw::drawCircle(x, y, 8, 12, color);
+	sfw::drawCircle(x, y, size, 12, color);
 }
 
-void Bullet::updateBullet(Player &p1, Player &p2)
+void Bullet::updateBullet(Player &p1, Player &p2, Orb &o)
 {
 	//PADDLE
 	Point playerPos = { p1.x, p1.y };
@@ -54,7 +54,7 @@ void Bullet::updateBullet(Player &p1, Player &p2)
 	}
 	
 
-	for (int i = 0; i < Player::MAX_AMMO_COUNT; ++i)
+	/*for (int i = 0; i < Player::MAX_AMMO_COUNT; ++i)
 	{
 		if (this != &p1.ammo[i])
 		{
@@ -83,27 +83,73 @@ void Bullet::updateBullet(Player &p1, Player &p2)
 				p2.ammo[i].x += p2.ammo[i].Velx * 2;
 			}
 		}
+	}*/
+
+	for (int i = 0; i < Player::MAX_AMMO_COUNT; ++i)
+	{
+		if (this != &p1.ammo[i])
+		{
+			if (collides(p1.ammo[i]))
+			{
+				Velx *= -1;
+				Vely += randRange(-10, 10);
+				p1.ammo[i].Velx *= -1;
+				p1.ammo[i].Vely += randRange(-10,10);
+				x += Velx * 2;
+				p1.ammo[i].x += p1.ammo[i].Velx * 2;
+			}
+		
+			if (p1.ammo[i].x + size> o.x - o.size && p1.ammo[i].y < o.y + o.size 
+				&& p1.ammo[i].y > o.y - o.size)
+			{
+				//Velx += 1;
+				p1.ammo[i].Vely = randRange(-10, 10);
+				p1.ammo[i].size = randRange(randRange(5,10), randRange(11, 20));
+			}
+		}
+	}
+	for (int i = 0; i < Player::MAX_AMMO_COUNT; ++i)
+	{
+		if (this != &p2.ammo[i])
+		{
+			if (collides(p2.ammo[i]))
+			{
+				Velx *= -1;
+				Vely += randRange(-10, 10);
+				p2.ammo[i].Velx *= -1;
+				p2.ammo[i].Vely += randRange(-10, 10);
+				x += Velx * 2;
+				p2.ammo[i].x += p2.ammo[i].Velx * 2;
+
+			}
+			if (p2.ammo[i].x + size < o.x + o.size && p2.ammo[i].y < o.y + o.size 
+				&& p2.ammo[i].y > o.y - o.size)
+			{
+				//Velx *= randRange(5, 10);
+				p2.ammo[i].Vely = randRange(-10, 10);
+				p2.ammo[i].size = randRange(randRange(5, 6
+				), randRange(11, 20));
+			}
+			
+			//if (p2.ammo[i].x < o.x && p2.ammo[i].y < o.y + o.size && p2.ammo[i].y > o.y - o.size)
+			//{
+			//	//Velx *= randRange(5, 10);
+			//	Vely *= randRange(-5, 5);
+			//	color = WHITE;
+			//}
+			//if (p2.ammo[i].x > o.x && p2.ammo[i].y < o.y + o.size && p2.ammo[i].y > o.y - o.size)
+			//{
+			//	//Velx += 1;
+			//	Vely += randRange(-5, 5);
+			//	color = WHITE;
+			//}
+
+		}
 	}
 
-	//if (x < x)
-	//{
-	//	Velx *= -1;
-	//}
-
-	//if (p1.ammo[0].x > p2.ammo[0].x)
-	//{
-	//	Velx *= -1;
-	//}
 
 
-	// What is the condition for bullets to collide?
-		// If their distance is small enough.
-
-
-
-
-
-	if (x < 0 || x > 800)
+	if (x < 10 || x > 1880)
 	{
 		active = false;
 	}
@@ -112,8 +158,22 @@ void Bullet::updateBullet(Player &p1, Player &p2)
 	if (y < 0)
 		Vely *= -1;
 
-	if (y > 600)
+	if (y > 950)
 		Vely *= -1;
+
+
+	//if (x < o.x && y < o.y + o.size && y > o.y - o.size )
+	//{
+	//	//Velx *= randRange(5, 10);
+	//	Vely *= randRange(-5, 5);
+	//	color = WHITE;
+	//}
+	//if (x > o.x && y < o.y + o.size && y > o.y - o.size)
+	//{
+	//	//Velx += 1;
+	//	Vely += randRange(-5, 5);
+	//	color = WHITE;
+	//}
 
 	x += Velx; //* sfw::getDeltaTime();
 	y += Vely; //* sfw::getDeltaTime();

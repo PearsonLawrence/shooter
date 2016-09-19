@@ -21,7 +21,7 @@ void Player::createPlayer(float a_x, float a_y, Rectangle rect,
 	// create boolets
 	for (int i = 0; i < MAX_AMMO_COUNT; i++)
 	{
-		ammo[i].createBullet(0, 0, 5, a_color);
+		ammo[i].createBullet(0, 0, 8, a_color);
 	}
 }
 
@@ -45,11 +45,11 @@ void Player::updatePlayer()
 	}
 
 	// bounds
-	if (y + box.corners[0].y < 0)
-		y = 0 - box.corners[0].y;
+	if (y + box.corners[0].y < 2)
+		y = 2 - box.corners[0].y;
 
-	if (y + box.corners[1].y > 600)
-		y = 600 - box.corners[1].y;
+	if (y + box.corners[1].y > 950)
+		y = 950 - box.corners[1].y;
 }
 
 void Player::drawPlayer()
@@ -69,7 +69,7 @@ bool Player::fireBullet()
 		{
 			ammo[i].active = true;
 
-			ammo[i].x = x + (15 * shootDirection);
+			ammo[i].x = x + (35 * shootDirection);
 			ammo[i].y = y;
 
 			ammo[i].Velx = shootSpeed * shootDirection;
