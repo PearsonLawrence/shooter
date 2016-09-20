@@ -30,7 +30,7 @@ void GameState::init()
 	playerRect.corners[1].y = 30;
 	//createOrb(300, 400, 15, RED);
 	p1.createPlayer(30, 475, playerRect, 'W', 'S', 'D', 1, GREEN);
-	p2.createPlayer(1860, 475, playerRect, 'I', 'K', 'J', -1, YELLOW);
+	p2.createPlayer2(1860, 475, playerRect, 1, 1, 1, -1, YELLOW);
 	o.createOrb(945, 475, 30, WHITE);
 	gameOver = false;
 }
@@ -57,7 +57,7 @@ void GameState::update()
 
 		// update all players
 		p1.updatePlayer();
-		p2.updatePlayer();
+		p2.updatePlayer2();
 		o.updateOrb();
 
 		// Two arrays
@@ -84,7 +84,7 @@ void GameState::drawRound()
 		
 		//drawOrb(b);
 		p1.drawPlayer();
-		p2.drawPlayer();
+		p2.drawPlayer2();
 		o.drawOrb();
 		drawhealth(d, p1.health, p2.health);
 	}

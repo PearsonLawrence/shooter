@@ -14,7 +14,7 @@ void Player::createPlayer(float a_x, float a_y, Rectangle rect,
 	shoot = a_shoot;
 	shootDirection = shootDir;
 	color = a_color;
-
+	shootSpeed = 15;
 
 	health = 100;
 
@@ -75,7 +75,7 @@ bool Player::fireBullet()
 			ammo[i].Velx = shootSpeed * shootDirection;
 			ammo[i].Vely = 0;
 
-			shootDelay = .25f;
+			shootDelay = .2f;
 
 			return true;
 		}

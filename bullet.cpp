@@ -34,10 +34,20 @@ void Bullet::updateBullet(Player &p1, Player &p2, Orb &o)
 		y + size > getCorner(p1.box, playerPos, 0).y)	// 2
 	{
 
-		
-		p2.health -= 2;
-		printf("%d to %d \n", p1.health, p2.health);
-		active = false;
+		if (color == GREEN)
+		{
+			p2.health -= 1;
+			printf("%d to %d \n", p1.health, p2.health);
+			active = false;
+		}
+
+		else if (color == YELLOW)
+		{
+			p2.health -= 2;
+			printf("%d to %d \n", p1.health, p2.health);
+			active = false;
+		}
+
 
 	}
 	//PADDLE
@@ -47,9 +57,20 @@ void Bullet::updateBullet(Player &p1, Player &p2, Orb &o)
 	{
 
 		
-		p1.health -= 2;
-		printf("%d to %d \n", p1.health, p2.health);
-		active = false;
+		if (color == GREEN)
+		{
+			p1.health -= 2;
+			printf("%d to %d \n", p1.health, p2.health);
+			active = false;
+		}
+
+		else if (color == YELLOW)
+		{
+			p1.health += .5f;
+			printf("%d to %d \n", p1.health, p2.health);
+			active = false;
+		}
+
 		//x = p2.x + p2.box.corners[0].x - size;
 	}
 	

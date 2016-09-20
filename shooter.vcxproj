@@ -143,6 +143,7 @@
     <ClCompile Include="Option.cpp" />
     <ClCompile Include="Orb.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="player2.cpp" />
     <ClCompile Include="Splash.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
