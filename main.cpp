@@ -7,13 +7,22 @@
 #include "depart.h"
 #include "option.h"
 #include "next.h"
+#include "load.h"
 void main()
 {
 	sfw::initContext(1890, 950, "NSFW Draw");
 	unsigned f = sfw::loadTextureMap("./res/tonc_font.png", 16, 6);
-	unsigned r = sfw::loadTextureMap("./res/background.jpg");
-	unsigned u = sfw::loadTextureMap("./res/crosshair.png");
+	unsigned r = sfw::loadTextureMap("./res/Eaarth.jpg");
+	unsigned u = sfw::loadTextureMap("./res/spaceship.png");
 	unsigned font = sfw::loadTextureMap("./res/fontmap.png", 16, 16);
+	unsigned s = sfw::loadTextureMap("./res/1.png");
+	unsigned p = sfw::loadTextureMap("./res/start.jpg");
+	unsigned t = sfw::loadTextureMap("./res/lose.jpg");
+	unsigned o = sfw::loadTextureMap("./res/option.jpg");
+	unsigned n = sfw::loadTextureMap("./res/orb.png");
+	unsigned v = sfw::loadTextureMap("./res/enemy.png");
+	unsigned z = sfw::loadTextureMap("./res/deep.jpg");
+	unsigned c = sfw::loadTextureMap("./res/blackholew.png");
 	GameState gs;
 
 	//gs.init();
@@ -21,6 +30,7 @@ void main()
 	Depart depart;
 	Splash splash;
 	Next next;
+	Load load;
 
 	option.init(font);
 
@@ -29,9 +39,13 @@ void main()
 	depart.init(font);
 
 	next.init(font);
+
+	load.init(font);
 	bool quit = false;
 
 	APP_STATE state = ENTER_SPLASH;
+
+	
 	while (sfw::stepContext() && !quit)
 	{
 		switch (state)
@@ -40,6 +54,7 @@ void main()
 			option.play();
 
 		case OPTION:
+			sfw::drawTexture(o, 0, 950, 1890, 950, 0, false, 0);
 			option.step();
 			option.draw();
 			state = option.next();
@@ -49,6 +64,7 @@ void main()
 			splash.play();
 
 		case SPLASH:
+			sfw::drawTexture(p, 0, 950, 1890, 950, 0, false, 0);
 			splash.step();
 			splash.draw();
 			state = splash.next();
@@ -57,7 +73,7 @@ void main()
 			gs.init();
 
 		case ACTION:
-			sfw::drawTexture(r, 10, 980, 1870, 995, 0, false, 0, RED);
+			sfw::drawTexture(r, 0, 980, 1890, 995, 0, false, 0);
 			gs.update();
 			gs.drawRound();
 			state = gs.next();
@@ -72,10 +88,20 @@ void main()
 			next.draw();
 			state = next.next();
 			break;
+		case ENTER_LOAD:
+				load.play();
+
+		case LOAD:
+			sfw::drawTexture(s, 0, 980, 1890, 1005, 0, false, 0, WHITE);
+			load.step();
+			load.draw();
+			state = load.load();
+			break;
 		case ENTER_DEPART:
 			depart.play();
-
+		
 		case DEPART:
+			sfw::drawTexture(z, 0, 950, 1890, 950, 0, false, 0);
 			depart.step();
 			depart.draw();
 			state = depart.next();

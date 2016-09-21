@@ -50,12 +50,12 @@ void drawRectangle(Rectangle rect, Point position)
 
 void drawWin(unsigned font)
 {
-	sfw::drawString(font, "Game over player 2 wins", 160, 600, 20, 20);
+	sfw::drawString(font, "The alien has destroyed the earth", 660, 600, 20, 20);
 }
 
 void drawWin2(unsigned font)
 {
-	sfw::drawString(font, "Game over player 1 wins ", 160, 600, 20, 20);
+	sfw::drawString(font, "You have saved the earth ", 770, 600, 20, 20);
 }
 
 //Orb createOrb(float x, float y, float size, unsigned int color)

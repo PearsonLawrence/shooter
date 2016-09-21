@@ -3,6 +3,7 @@
 
 class Splash
 {
+	
 	int font;
 	float timer;
 public:

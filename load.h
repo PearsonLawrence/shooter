@@ -1,13 +1,11 @@
 #pragma once
 #include "constdecl.h"
-#include "sfwdraw.h"
-class Next
+class Load
 {
 	int font;
 	float timer;
 	int select;
 public:
-	
 	//called on startup
 	void init(int a_font);
 
@@ -18,6 +16,6 @@ public:
 	void draw();
 	void step();
 
-	APP_STATE next();
+	APP_STATE load();
 
 };

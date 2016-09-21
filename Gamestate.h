@@ -13,6 +13,9 @@ private:
 	unsigned d = sfw::loadTextureMap("./res/fontmap.png", 16, 16);
 	unsigned r = sfw::loadTextureMap("./res/background.jpg");
 	unsigned u = sfw::loadTextureMap("./res/crosshair.png");
+	unsigned n = sfw::loadTextureMap("./res/orb.png");
+	unsigned t = sfw::loadTextureMap("./res/lose.jpg");
+	unsigned y = sfw::loadTextureMap("./res/win.jpg");
 	Orb o;
 	Player p1, p2;
 	Rectangle playerRect;

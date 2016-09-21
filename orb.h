@@ -1,10 +1,12 @@
 #pragma once
+#include "sfwdraw.h"
 class Bullet;
 
 
 class Orb
 {
 private:
+	unsigned c = sfw::loadTextureMap("./res/blackhole.png");
 	unsigned int color = 0;
 	float freezeTimer = 2;
 

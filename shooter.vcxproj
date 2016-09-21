@@ -126,6 +126,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="GameAction.h" />
     <ClInclude Include="Gamestate.h" />
+    <ClInclude Include="load.h" />
     <ClInclude Include="next.h" />
     <ClInclude Include="Option.h" />
     <ClInclude Include="orb.h" />
@@ -138,6 +139,7 @@
     <ClCompile Include="Depart.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gameSt.cpp" />
+    <ClCompile Include="load.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="next.cpp" />
     <ClCompile Include="Option.cpp" />

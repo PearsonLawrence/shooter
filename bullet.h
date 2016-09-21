@@ -1,10 +1,12 @@
 #pragma once
 #include "orb.h"
+#include "sfwdraw.h"
 class Player;	// forward declaration
 
 class Bullet
 {
 private:	
+	unsigned n = sfw::loadTextureMap("./res/orb.png");
 	unsigned int color = 0;
 	float freezeTimer = 2;
 

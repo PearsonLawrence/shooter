@@ -79,7 +79,8 @@ void Player::updatePlayer2()
 
 void Player::drawPlayer2()
 {
-	drawRectangle(box, { x, y });
+	sfw::drawTexture(v, x - 20, y + 15, 60, 40, 0, false, 0, WHITE);
+	
 }
 //bool Player::fireBullet()
 //{

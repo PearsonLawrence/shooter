@@ -7,9 +7,11 @@ void Next::play() { timer = 4.f; }
 
 void Next::draw()
 {
+	
+	
 	char buffer[64];
 	sprintf_s(buffer, "Please Press ESC to return to menu.");
-	sfw::drawString(font, buffer, 170, 290, 15, 15);
+	sfw::drawString(font, buffer, 700, 290, 15, 15);
 	//sfw::drawLine(100, 80, 100 + 500 * (timer / 4.f), 80);
 }
 

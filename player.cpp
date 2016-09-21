@@ -15,7 +15,7 @@ void Player::createPlayer(float a_x, float a_y, Rectangle rect,
 	shootDirection = shootDir;
 	color = a_color;
 	shootSpeed = 15;
-
+	scoreStreak = 0;
 	health = 100;
 
 	// create boolets
@@ -54,7 +54,8 @@ void Player::updatePlayer()
 
 void Player::drawPlayer()
 {
-	drawRectangle(box, { x, y });
+	sfw::drawTexture(u, x - 15, y + 15, 60, 40, 0, false, 0, WHITE);
+	
 }
 bool Player::fireBullet()
 {
@@ -69,7 +70,7 @@ bool Player::fireBullet()
 		{
 			ammo[i].active = true;
 
-			ammo[i].x = x + (35 * shootDirection);
+			ammo[i].x = x + (80 * shootDirection);
 			ammo[i].y = y;
 
 			ammo[i].Velx = shootSpeed * shootDirection;

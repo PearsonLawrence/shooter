@@ -20,7 +20,9 @@ void Bullet::createBullet(float a_x, float a_y, float a_size, unsigned int a_col
 
 void Bullet::drawBullet()
 {
-	sfw::drawCircle(x, y, size, 12, color);
+	sfw::drawTexture(n, x -15, y + 15, 30, 30, 0, false, 0, color);
+//	sfw::drawCircle(x, y, size, 12, color);
+
 }
 
 void Bullet::updateBullet(Player &p1, Player &p2, Orb &o)
@@ -28,6 +30,12 @@ void Bullet::updateBullet(Player &p1, Player &p2, Orb &o)
 	//PADDLE
 	Point playerPos = { p1.x, p1.y };
 	Point playerPos2 = { p2.x, p2.y };
+
+	/*if (p2.scoreStreak >= 5 && sfw::getKey('E'))
+	{
+		active = false;
+		p2.scoreStreak = 0;
+	}*/
 
 	if (x - size < getCorner(p1.box, playerPos, 1).x &&	// 3 ball must be past
 		y - size < getCorner(p1.box, playerPos, 1).y &&	// 1 
@@ -43,12 +51,18 @@ void Bullet::updateBullet(Player &p1, Player &p2, Orb &o)
 
 		else if (color == YELLOW)
 		{
+			//p1.scoreStreak++;
 			p2.health -= 2;
 			printf("%d to %d \n", p1.health, p2.health);
 			active = false;
 		}
 
 
+	}
+	if (p2.scoreStreak >= 10 && sfw::getKey('E'))
+	{
+		p2.health += 10;
+		p2.scoreStreak = 0;
 	}
 	//PADDLE
 	if (x + size > getCorner(p2.box, playerPos2, 0).x &&	// 3 ball must be past
@@ -59,6 +73,7 @@ void Bullet::updateBullet(Player &p1, Player &p2, Orb &o)
 		
 		if (color == GREEN)
 		{
+			p2.scoreStreak++;
 			p1.health -= 2;
 			printf("%d to %d \n", p1.health, p2.health);
 			active = false;
@@ -66,7 +81,8 @@ void Bullet::updateBullet(Player &p1, Player &p2, Orb &o)
 
 		else if (color == YELLOW)
 		{
-			p1.health += .5f;
+
+			p1.health += 1.f;
 			printf("%d to %d \n", p1.health, p2.health);
 			active = false;
 		}
@@ -105,11 +121,17 @@ void Bullet::updateBullet(Player &p1, Player &p2, Orb &o)
 			}
 		}
 	}*/
+	
+
 
 	for (int i = 0; i < Player::MAX_AMMO_COUNT; ++i)
 	{
+		
+
 		if (this != &p1.ammo[i])
 		{
+			
+
 			if (collides(p1.ammo[i]))
 			{
 				Velx *= -1;
@@ -125,10 +147,12 @@ void Bullet::updateBullet(Player &p1, Player &p2, Orb &o)
 			{
 				//Velx += 1;
 				p1.ammo[i].Vely = randRange(-10, 10);
-				p1.ammo[i].size = randRange(randRange(5,10), randRange(11, 20));
+			
 			}
 		}
 	}
+
+
 	for (int i = 0; i < Player::MAX_AMMO_COUNT; ++i)
 	{
 		if (this != &p2.ammo[i])
@@ -148,8 +172,7 @@ void Bullet::updateBullet(Player &p1, Player &p2, Orb &o)
 			{
 				//Velx *= randRange(5, 10);
 				p2.ammo[i].Vely = randRange(-10, 10);
-				p2.ammo[i].size = randRange(randRange(5, 6
-				), randRange(11, 20));
+				
 			}
 			
 			//if (p2.ammo[i].x < o.x && p2.ammo[i].y < o.y + o.size && p2.ammo[i].y > o.y - o.size)
@@ -196,6 +219,7 @@ void Bullet::updateBullet(Player &p1, Player &p2, Orb &o)
 	//	color = WHITE;
 	//}
 
+	
 	x += Velx; //* sfw::getDeltaTime();
 	y += Vely; //* sfw::getDeltaTime();
 }
