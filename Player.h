@@ -15,7 +15,7 @@ class Player
 	float shootDelay;
 	
 public:
-	Rectangle box;
+	Ship box;
 	int health = 0;
 	float x = 0, y = 0;
 	float Vely = 10;
@@ -24,12 +24,12 @@ public:
 	const static int MAX_AMMO_COUNT = 15;
 	Bullet ammo[MAX_AMMO_COUNT];
 
-	void createPlayer(float x, float y, Rectangle rect,
+	void createPlayer(float x, float y, Ship rect,
 		char up, char down, char shoot, int shootDir,
 		unsigned int color);
 	void updatePlayer();
 	void drawPlayer();
-	void createPlayer2(float x, float y, Rectangle rect,
+	void createPlayer2(float x, float y, Ship rect,
 		int up, int down, int shoot, int shootDir,
 		unsigned int color);
 	void updatePlayer2();

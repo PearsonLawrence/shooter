@@ -18,7 +18,7 @@ private:
 	unsigned y = sfw::loadTextureMap("./res/win.jpg");
 	Orb o;
 	Player p1, p2;
-	Rectangle playerRect;
+	Ship playerRect;
 	bool gameOver = false;
 	float timer = 2;
 public:

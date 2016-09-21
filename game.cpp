@@ -1,5 +1,5 @@
 #include "game.h"
-Point getCorner(Rectangle rect, Point position, int corner)
+Point getCorner(Ship rect, Point position, int corner)
 {
 	Point retval;
 
@@ -16,7 +16,7 @@ int randRange(int start, int end)
 }
 
 
-void drawRectangle(Rectangle rect, Point position)
+void drawShip(Ship rect, Point position)
 {
 	// move points
 	//rect.corners[0].x += position.x;

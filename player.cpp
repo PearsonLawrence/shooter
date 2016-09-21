@@ -2,7 +2,7 @@
 #include "player.h"
 #include "game.h"
 
-void Player::createPlayer(float a_x, float a_y, Rectangle rect,
+void Player::createPlayer(float a_x, float a_y, Ship rect,
 	char a_up, char a_down, char a_shoot, int shootDir,
 	unsigned int a_color)
 {

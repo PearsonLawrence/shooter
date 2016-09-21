@@ -1,6 +1,7 @@
 
 #include "Gamestate.h"
 #include <cstdio>
+#include <iostream>
 #include "sfwdraw.h"
 #include "constdecl.h"
 #include "splash.h"
@@ -8,6 +9,8 @@
 #include "option.h"
 #include "next.h"
 #include "load.h"
+#include <Windows.h>
+#include "MMSystem.h"
 void main()
 {
 	sfw::initContext(1890, 950, "NSFW Draw");
@@ -62,8 +65,9 @@ void main()
 
 		case ENTER_SPLASH:
 			splash.play();
-
+			PlaySound(TEXT("hero.wav"), NULL, SND_ASYNC);
 		case SPLASH:
+			
 			sfw::drawTexture(p, 0, 950, 1890, 950, 0, false, 0);
 			splash.step();
 			splash.draw();
@@ -71,8 +75,9 @@ void main()
 			break;
 		case ENTER_ACTION:
 			gs.init();
-
+			PlaySound(TEXT("game.wav"), NULL, SND_ASYNC);
 		case ACTION:
+			
 			sfw::drawTexture(r, 0, 980, 1890, 995, 0, false, 0);
 			gs.update();
 			gs.drawRound();
@@ -81,7 +86,7 @@ void main()
 
 		case ENTER_NEXT:
 			next.play();
-
+		
 		case NEXT:
 			gs.drawRound();
 			next.step();

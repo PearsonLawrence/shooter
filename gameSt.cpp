@@ -74,7 +74,7 @@ void GameState::init()
 {
 	//Orb orb;
 	sfw::loadTextureMap("./res/background.jpg");
-	Rectangle playerRect;
+	Ship playerRect;
 	//Orb b;
 
 	playerRect.corners[0].x = -20;
