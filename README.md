@@ -1,5 +1,7 @@
-# Pong
-Pong
+# Space Pong Shooter
+What was to be pong turned into a shooter in space
+
+- My first video game project 
 
 Open in visual studio and build!
 
